@@ -1,7 +1,7 @@
 # Rose Bakeshop (Frontend-only E-Commerce)
 
 This project is a frontend-only e-commerce web app built for IT-101.
-
+## Nino Piedad & David Cinco
 ## Pages
 - Home: `index.html`
 - Products (listing): `products.html`
