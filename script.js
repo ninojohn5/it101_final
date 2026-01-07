@@ -1,7 +1,8 @@
 /* script.js
    Rose Bakeshop (Frontend-only E-Commerce UI)
-   - Safe slider init (only runs on menu.html)
+   - Menu slider init (only runs if elements exist)
    - Cart logic uses localStorage (no backend)
+   - Mobile nav (hamburger) opens a RIGHT-to-LEFT drawer
 */
 
 (function () {
@@ -10,12 +11,10 @@
   /* =========================
      Helpers
      ========================= */
-
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.from((root || document).querySelectorAll(sel)); }
 
   function formatPHP(amount) {
-    // Keep it simple: PHP with 2 decimals
     return "₱" + Number(amount).toFixed(2);
   }
 
@@ -23,10 +22,75 @@
     try { return JSON.parse(jsonStr); } catch (e) { return fallback; }
   }
 
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  /* =========================
+     Mobile Nav (Hamburger)
+     ========================= */
+  function initMobileNav() {
+    var header = qs(".main-header");
+    var btn = qs(".nav-toggle");
+    var nav = qs("#primaryNav");
+    if (!header || !btn || !nav) return;
+
+    // Create backdrop if not present
+    var backdrop = qs(".nav-backdrop");
+    if (!backdrop) {
+      backdrop = document.createElement("div");
+      backdrop.className = "nav-backdrop";
+      document.body.appendChild(backdrop);
+    }
+
+    function isOpen() {
+      return header.classList.contains("nav-open");
+    }
+
+    function setOpen(open) {
+      header.classList.toggle("nav-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      backdrop.classList.toggle("show", open);
+
+      // Prevent page scroll when menu open
+      document.body.classList.toggle("no-scroll", open);
+    }
+
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!isOpen());
+    });
+
+    // Close when clicking backdrop
+    backdrop.addEventListener("click", function () {
+      setOpen(false);
+    });
+
+    // Close when clicking a nav link
+    nav.addEventListener("click", function (e) {
+      if (e.target && e.target.tagName === "A") setOpen(false);
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+
+    // If switched to desktop, force close
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) setOpen(false);
+    });
+  }
+
   /* =========================
      Cart (localStorage)
      ========================= */
-
   var CART_KEY = "rb_cart_v1";
 
   function getCart() {
@@ -110,7 +174,6 @@
 
   function calcTotals(lines) {
     var subtotal = lines.reduce(function (sum, l) { return sum + l.subtotal; }, 0);
-    // simple fixed shipping rule for demo UI
     var shipping = subtotal > 0 ? 50 : 0;
     var total = subtotal + shipping;
     return { subtotal: subtotal, shipping: shipping, total: total };
@@ -126,9 +189,8 @@
   }
 
   /* =========================
-     Toast feedback (HCI: user feedback)
+     Toast feedback
      ========================= */
-
   function ensureToastEl() {
     var el = qs("#toast");
     if (el) return el;
@@ -157,7 +219,6 @@
   /* =========================
      Products page
      ========================= */
-
   function renderProductsPage() {
     var grid = qs("[data-products-grid]");
     if (!grid) return;
@@ -210,7 +271,6 @@
 
       filtered.forEach(function (p) { grid.appendChild(buildCard(p)); });
 
-      // bind add buttons
       qsa("[data-add]", grid).forEach(function (btn) {
         btn.addEventListener("click", function () {
           addToCart(btn.getAttribute("data-add"), 1);
@@ -218,10 +278,8 @@
       });
     }
 
-    // Fill categories
     if (filter) {
       var categories = Array.from(new Set(products.map(function (p) { return p.category; })));
-      // keep first option "All"
       categories.forEach(function (c) {
         var opt = document.createElement("option");
         opt.value = c;
@@ -239,7 +297,6 @@
   /* =========================
      Product details page
      ========================= */
-
   function renderProductDetailsPage() {
     var wrap = qs("[data-product-details]");
     if (!wrap) return;
@@ -295,20 +352,33 @@
   /* =========================
      Cart page
      ========================= */
-
   function renderCartPage() {
     var table = qs("[data-cart-table]");
     if (!table) return;
 
-    var lines = cartToLines();
-    var totals = calcTotals(lines);
-
     var body = qs("[data-cart-body]");
     var summary = qs("[data-cart-summary]");
 
+    function renderSummary(t, empty) {
+      return (
+        '<div class="summary-card">' +
+          '<h3>Order Summary</h3>' +
+          '<div class="summary-row"><span>Subtotal</span><span>' + formatPHP(t.subtotal) + '</span></div>' +
+          '<div class="summary-row"><span>Shipping</span><span>' + formatPHP(t.shipping) + '</span></div>' +
+          '<div class="summary-row total"><span>Total</span><span>' + formatPHP(t.total) + '</span></div>' +
+          '<div class="summary-actions">' +
+            (empty
+              ? '<a class="btn-solid-brown" href="products.html">Shop now</a>'
+              : '<a class="btn-solid-brown" href="checkout.html">Proceed to checkout</a>') +
+            (!empty ? '<button class="btn-outline" type="button" data-clear>Clear cart</button>' : '') +
+          '</div>' +
+        '</div>'
+      );
+    }
+
     function draw() {
-      lines = cartToLines();
-      totals = calcTotals(lines);
+      var lines = cartToLines();
+      var totals = calcTotals(lines);
 
       body.innerHTML = "";
 
@@ -322,10 +392,7 @@
             '</div>' +
           '</td></tr>';
 
-        if (summary) {
-          summary.innerHTML = renderSummary(totals, true);
-        }
-        disableCheckout(true);
+        if (summary) summary.innerHTML = renderSummary(totals, true);
         return;
       }
 
@@ -350,12 +417,11 @@
         body.appendChild(tr);
       });
 
-      // Bind events
       qsa("[data-qty]", body).forEach(function (input) {
         input.addEventListener("input", function () {
           var id = input.getAttribute("data-qty");
           var qty = Number(input.value);
-          if (!Number.isFinite(qty) || qty < 1) return; // prevent flicker while typing
+          if (!Number.isFinite(qty) || qty < 1) return;
           updateQty(id, qty);
           draw();
         });
@@ -368,40 +434,11 @@
         });
       });
 
-      if (summary) {
-        summary.innerHTML = renderSummary(totals, false);
-      }
-      disableCheckout(false);
-    }
-
-    function renderSummary(t, empty) {
-      return (
-        '<div class="summary-card">' +
-          '<h3>Order Summary</h3>' +
-          '<div class="summary-row"><span>Subtotal</span><span>' + formatPHP(t.subtotal) + '</span></div>' +
-          '<div class="summary-row"><span>Shipping</span><span>' + formatPHP(t.shipping) + '</span></div>' +
-          '<div class="summary-row total"><span>Total</span><span>' + formatPHP(t.total) + '</span></div>' +
-          '<div class="summary-actions">' +
-            (empty
-              ? '<a class="btn-solid-brown" href="products.html">Shop now</a>'
-              : '<a class="btn-solid-brown" href="checkout.html">Proceed to checkout</a>') +
-            (!empty ? '<button class="btn-outline" type="button" data-clear>Clear cart</button>' : '') +
-          '</div>' +
-        '</div>'
-      );
-    }
-
-    function disableCheckout(disabled) {
-      var checkoutLink = qs("[data-proceed-checkout]");
-      if (!checkoutLink) return;
-      checkoutLink.setAttribute("aria-disabled", disabled ? "true" : "false");
-      checkoutLink.classList.toggle("is-disabled", !!disabled);
-      checkoutLink.tabIndex = disabled ? -1 : 0;
+      if (summary) summary.innerHTML = renderSummary(totals, false);
     }
 
     draw();
 
-    // Clear cart button in summary
     document.addEventListener("click", function (e) {
       var target = e.target;
       if (target && target.matches("[data-clear]")) {
@@ -415,20 +452,16 @@
   /* =========================
      Checkout page
      ========================= */
-
   function renderCheckoutPage() {
     var wrap = qs("[data-checkout]");
     if (!wrap) return;
-
-    var lines = cartToLines();
-    var totals = calcTotals(lines);
 
     var orderBox = qs("[data-checkout-summary]");
     var form = qs("[data-checkout-form]");
 
     function drawSummary() {
-      lines = cartToLines();
-      totals = calcTotals(lines);
+      var lines = cartToLines();
+      var totals = calcTotals(lines);
 
       if (!orderBox) return;
 
@@ -468,12 +501,12 @@
 
     drawSummary();
 
-    if (lines.length === 0) {
+    var linesNow = cartToLines();
+    if (linesNow.length === 0) {
       setFormDisabled(true);
       return;
     }
 
-    // simple validation
     var placeBtn = qs("[data-place-order]");
     var requiredFields = qsa("[data-required]", form);
 
@@ -514,7 +547,6 @@
         clearCart();
         updateCartBadge();
         toast("Order placed. Thank you!");
-        // show a simple success state
         wrap.innerHTML =
           '<div class="empty-state">' +
             '<h2>Order Confirmed</h2>' +
@@ -529,11 +561,9 @@
   /* =========================
      Menu slider (only if elements exist)
      ========================= */
-
   function initMenuSlider() {
     var slides = qsa(".menu-slide");
     var dots = qsa(".dot");
-
     if (slides.length === 0 || dots.length === 0) return;
 
     var slideIndex = 1;
@@ -549,51 +579,30 @@
       dots[slideIndex - 1].className += " active";
     }
 
-    window.plusSlides = function (n) {
-      showSlides(slideIndex += n);
-    };
-
-    window.currentSlide = function (n) {
-      showSlides(slideIndex = n);
-    };
+    window.plusSlides = function (n) { showSlides(slideIndex += n); };
+    window.currentSlide = function (n) { showSlides(slideIndex = n); };
 
     showSlides(slideIndex);
 
-    // Auto play
     window.setInterval(function () {
       showSlides(slideIndex += 1);
     }, 8000);
   }
 
   /* =========================
-     HTML escaping
-     ========================= */
-
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  /* =========================
      Init
      ========================= */
+  document.addEventListener("DOMContentLoaded", function () {
+    updateCartBadge();
+    initMobileNav();
+    initMenuSlider();
+    renderProductsPage();
+    renderProductDetailsPage();
+    renderCartPage();
+    renderCheckoutPage();
+  });
 
-     document.addEventListener("DOMContentLoaded", function () {
-      updateCartBadge();
-      initMobileNav(); 
-      initMenuSlider();
-      renderProductsPage();
-      renderProductDetailsPage();
-      renderCartPage();
-      renderCheckoutPage();
-    });
-    
-
-  // Expose for inline HTML usage, if needed
+  // Expose
   window.RB = {
     addToCart: addToCart,
     removeFromCart: removeFromCart,
@@ -602,31 +611,3 @@
     getCart: getCart
   };
 })();
-
-
-function initMobileNav() {
-  var header = document.querySelector(".main-header");
-  var btn = document.querySelector(".nav-toggle");
-  var nav = document.getElementById("primaryNav");
-  if (!header || !btn || !nav) return;
-
-  btn.addEventListener("click", function () {
-    var isOpen = header.classList.contains("nav-open");
-    header.classList.toggle("nav-open", !isOpen);
-    btn.setAttribute("aria-expanded", String(!isOpen));
-  });
-
-  nav.addEventListener("click", function (e) {
-    if (e.target && e.target.tagName === "A") {
-      header.classList.remove("nav-open");
-      btn.setAttribute("aria-expanded", "false");
-    }
-  });
-
-  window.addEventListener("resize", function () {
-    if (window.innerWidth > 768) {
-      header.classList.remove("nav-open");
-      btn.setAttribute("aria-expanded", "false");
-    }
-  });
-}

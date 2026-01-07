@@ -2,65 +2,69 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rose Bakeshop | Home</title>
 
-    <link href="images/logo2.png" rel="icon" />
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="icon" href="images/logo2.png" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Font Awesome (MOVED HERE, not inside body) -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fix.css" />
   </head>
 
   <body>
-
-    <!-- MAIN HEADER -->
     <header class="main-header">
       <div class="container-wide header-content">
         <div class="logo-area">
-          <a class="" href="index.html">
+          <a href="index.html">
             <img src="images/logo.png" alt="Rose Bakeshop Logo" />
           </a>
         </div>
-    
+
         <div class="nav-area">
-          <!-- HAMBURGER BUTTON -->
-          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="primaryNav"
+          >
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </button>
-    
-          <!-- NAV (IMPORTANT: add id="primaryNav") -->
+
           <nav class="main-nav" id="primaryNav">
             <a href="index.html">HOME</a>
             <a href="products.html">PRODUCTS</a>
             <a href="menu.html">MENU</a>
-            <a href="cart.html">CART <span class="cart-badge" data-cart-count>0</span></a>
+            <a href="cart.html">
+              CART <span class="cart-badge" data-cart-count>0</span>
+            </a>
             <a href="checkout.html">CHECKOUT</a>
           </nav>
         </div>
       </div>
     </header>
-    
 
-    <!-- HERO -->
     <section class="hero-banner">
       <div class="container-wide hero-grid">
         <div class="hero-text-side">
           <h1 class="hero-title">
-            CREATING <br />SWEET MEMORIES <br />FOR GENERATIONS
+            CREATING <br />
+            SWEET MEMORIES <br />
+            FOR GENERATIONS
           </h1>
 
           <p class="hero-subtitle">
@@ -69,24 +73,30 @@
           </p>
 
           <div class="hero-buttons">
-            <!-- Avoid broken links during grading -->
             <a class="btn-outline-white" href="#">FRANCHISE WITH US</a>
             <a class="btn-solid-brown" href="menu.html">EXPLORE MENU</a>
           </div>
         </div>
 
         <div class="hero-image-side">
-          <img alt="Rose Bakeshop Favorites" src="images/hero_bg2.png" />
+          <img src="images/hero_bg2.png" alt="Rose Bakeshop Favorites" />
         </div>
       </div>
     </section>
 
-    <!-- ABOUT SUMMARY -->
     <section class="about-summary">
-      <img alt="" class="floating-deco position-left" src="images/pan1.jpg" />
-      <img alt="" class="floating-deco position-right" src="images/pan2.jpg" />
-      <img alt="" class="floating-deco position-left-bottom" src="images/pan3.jpg" />
-      <img alt="" class="floating-deco position-right-bottom" src="images/cake.jpg" />
+      <img class="floating-deco position-left" src="images/pan1.jpg" alt="" />
+      <img class="floating-deco position-right" src="images/pan2.jpg" alt="" />
+      <img
+        class="floating-deco position-left-bottom"
+        src="images/pan3.jpg"
+        alt=""
+      />
+      <img
+        class="floating-deco position-right-bottom"
+        src="images/cake.jpg"
+        alt=""
+      />
 
       <div class="container">
         <div class="text-center">
@@ -97,7 +107,6 @@
             coming years.
           </p>
 
-          <!-- Avoid broken link during grading -->
           <a class="btn-solid-brown" href="#">ABOUT US</a>
         </div>
 
@@ -136,31 +145,34 @@
       </div>
     </section>
 
-    <!-- MENU PREVIEW -->
     <section class="menu-preview-section">
       <div class="container-wide menu-preview-grid">
-        <img alt="" class="floating-deco position-center" src="images/breadcrumbs.png" />
+        <img
+          class="floating-deco position-center"
+          src="images/breadcrumbs.png"
+          alt=""
+        />
 
         <div class="menu-image-card">
-          <img alt="Menu Preview" src="images/pares.png" />
+          <img src="images/pares.png" alt="Menu Preview" />
         </div>
 
         <div class="menu-text-content">
           <h2 class="section-heading orange-text">ROSE MENU</h2>
           <p class="section-desc">
-            Discover your new favorites that will get you going throughout the day.
+            Discover your new favorites that will get you going throughout the
+            day.
           </p>
           <a class="btn-solid-brown" href="menu.html">EXPLORE MENU</a>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="main-footer">
       <div class="container footer-grid">
         <div class="footer-col logo-col">
           <div class="footer-logo-circle">
-            <img alt="Rose Logo" id="logo2" src="images/logo2.png" />
+            <img src="images/logo2.png" alt="Rose Logo" id="logo2" />
           </div>
         </div>
 
@@ -197,7 +209,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="container">
+        <div class="container footer-bottom-inner">
           <p>© 2025 Rose Bakeshop. All rights reserved.</p>
           <div class="legal-links">
             <a href="#">Sitemap</a>

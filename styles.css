@@ -2156,11 +2156,6 @@ html, body {
   }
 
 
-/* =========================================================
-   FINAL OVERRIDE: MOBILE HAMBURGER + DROPDOWN (DO NOT EDIT)
-   Fixes: hamburger bars showing as "..." and skinny dropdown
-   ========================================================= */
-
 /* Make hamburger stack vertically (not side-by-side) */
 .nav-toggle{
   display:none;
@@ -2223,5 +2218,178 @@ html, body {
     text-align:center !important;
     transform:none !important;
     white-space:nowrap !important;
+  }
+}
+
+   @media (max-width: 768px) {
+    /* Make header layout: logo center, hamburger right */
+    header.main-header .header-content {
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+      align-items: center !important;
+      gap: 10px !important;
+    }
+  
+    header.main-header .logo-area {
+      justify-content: center !important;
+      width: 100% !important;
+    }
+  
+    header.main-header .nav-area {
+      position: relative !important;
+      width: auto !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+    }
+  
+    /* Hamburger bars must stack vertically */
+    header.main-header .nav-toggle {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 5px !important;
+    }
+  
+    header.main-header .nav-toggle .bar,
+    header.main-header .nav-toggle span {
+      display: block !important;
+      width: 22px !important;
+      height: 2px !important;
+      background: #333 !important;
+      border-radius: 2px !important;
+    }
+  
+    /* The dropdown MUST be a full panel, not a skinny pill */
+    header.main-header nav.main-nav {
+      position: absolute !important;
+      top: calc(100% + 10px) !important;
+  
+      /* Key: full width panel with padding margins */
+      left: 12px !important;
+      right: 12px !important;
+      width: auto !important;
+  
+      background: #fff !important;
+      border-radius: 16px !important;
+      padding: 14px !important;
+  
+      display: none !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+  
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15) !important;
+      z-index: 9999 !important;
+  
+      /* Kill any weird forced size from older rules */
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: 70vh !important;
+      overflow: auto !important;
+    }
+  
+    header.main-header.nav-open nav.main-nav {
+      display: flex !important;
+    }
+  
+    header.main-header nav.main-nav a {
+      width: 100% !important;
+      text-align: center !important;
+      padding: 12px 14px !important;
+      border-radius: 12px !important;
+      transform: none !important;
+      white-space: nowrap !important;
+    }
+  }
+
+
+/* Desktop layout stays: table left, summary right */
+.cart-wrap{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap:18px;
+}
+
+/* Mobile: stack everything */
+@media (max-width: 980px){
+  .cart-wrap{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+.table-scroll{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius:18px;
+}
+
+/* Keep table behaving like a table */
+.cart-table{
+  width:100%;
+  border-collapse: collapse;
+  min-width: 640px; /* forces scroll on small screens instead of squishing */
+}
+
+/* Prevent ugly wrapping that breaks rows */
+.cart-table th,
+.cart-table td{
+  white-space: nowrap;
+}
+
+/* Make the Item cell have enough space */
+.cart-item{
+  min-width: 260px;
+}
+
+/* Slightly smaller controls on phones */
+@media (max-width: 640px){
+  .cart-thumb{
+    width:48px;
+    height:48px;
+  }
+  .qty-input{
+    width:70px;
+    padding:8px 10px;
+  }
+  .cart-table{
+    min-width: 600px;
+  }
+}
+
+/* Ensure summary becomes full width when stacked */
+@media (max-width: 980px){
+  aside[data-cart-summary]{
+    width:100% !important;
+  }
+}
+
+
+/* Keep table as a real table (undo any display:block mobile hacks) */
+.cart-table{
+  display: table !important;
+  width: 100% !important;
+  overflow: visible !important;
+  border-collapse: collapse !important;
+}
+
+/* The wrapper is the one that scrolls */
+.table-scroll{
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Force horizontal scroll instead of crushing columns */
+.cart-table{
+  min-width: 680px !important;
+}
+
+/* Stack summary under table on smaller screens */
+@media (max-width: 980px){
+  .cart-wrap{
+    grid-template-columns: 1fr !important;
   }
 }
