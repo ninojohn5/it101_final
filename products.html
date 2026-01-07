@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | Rose Bakeshop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+
+    
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div class="container-wide header-content">
+        <div class="logo-area">
+          <a class="" href="index.html">
+            <img src="images/logo.png" alt="Rose Bakeshop Logo" />
+          </a>
+        </div>
+    
+        <div class="nav-area">
+          <!-- HAMBURGER BUTTON -->
+          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+    
+          <!-- NAV (IMPORTANT: add id="primaryNav") -->
+          <nav class="main-nav" id="primaryNav">
+            <a href="index.html">HOME</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="menu.html">MENU</a>
+            <a href="cart.html">CART <span class="cart-badge" data-cart-count>0</span></a>
+            <a href="checkout.html">CHECKOUT</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+    <main>
+      
+<section class="page-head">
+  <div class="container">
+    <h1>Products</h1>
+    <p>Browse our best sellers and add items to your cart. This is a frontend-only demo using dummy data.</p>
+
+    <div class="controls-row">
+      <input class="input" type="search" placeholder="Search products..." aria-label="Search products" data-products-search />
+      <select class="select" aria-label="Filter by category" data-products-filter>
+        <option value="all">All categories</option>
+      </select>
+      <a class="btn-outline" href="cart.html" data-proceed-checkout>View cart</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="product-grid" data-products-grid></div>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="main-footer">
+<div class="container footer-grid">
+<div class="footer-col logo-col">
+<div class="footer-logo-circle">
+<img alt="Rose Logo" id="logo2" src="images/logo2.png"/>
+</div>
+</div>
+<div class="footer-col">
+<h3>ABOUT</h3>
+<p>
+            Welcome to the Official website of Rose Bakeshop PH.
+            #PasalubongNgBayan #FreshlyBakedEveryday
+          </p>
+<div class="footer-socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h3>HEADQUARTERS</h3>
+<p>Dona Vicenta Village, Bajada, Davao City, Philippines</p>
+</div>
+<div class="footer-col">
+<h3>QUICKLINKS</h3>
+<ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="menu.html">Menu</a></li><li><a href="cart.html">Cart</a></li><li><a href="checkout.html">Checkout</a></li></ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="container">
+<p>© 2025 Rose Bakeshop. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Sitemap</a>
+<a href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

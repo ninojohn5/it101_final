@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Bakeshop | Menu</title>
+
+  <link rel="icon" href="images/logo2.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <!-- HEADER (no top socials) -->
+  <header class="main-header">
+    <div class="container-wide header-content">
+      <div class="logo-area">
+        <a class="logo" href="index.html" aria-label="Go to Home">
+          <img class="logo-img" src="images/logo.png" alt="Rose Bakeshop Logo" />
+        </a>
+      </div>
+
+      <div class="nav-area">
+        <!-- Hamburger Button (Mobile) -->
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      
+        <!-- Navigation -->
+        <nav class="main-nav" id="primaryNav">
+          <a class="active" href="index.html">HOME</a>
+          <a href="products.html">PRODUCTS</a>
+          <a href="menu.html">MENU</a>
+          <a href="cart.html">CART <span class="cart-badge" data-cart-count="">0</span></a>
+          <a href="checkout.html">CHECKOUT</a>
+        </nav>
+      </div>
+      
+    </div>
+  </header>
+
+ <!-- BEST SELLER SLIDER -->
+<section class="menu-hero-slider" aria-label="Best Seller Slider">
+  <div class="bg-circle circle-1"></div>
+  <div class="bg-circle circle-2"></div>
+
+  <!--  CENTERED HEADING -->
+  <div class="best-seller-head">
+    <h1>BEST SELLER</h1>
+  </div>
+
+  <div class="slider-container">
+    <button class="slider-arrow prev-btn" type="button" aria-label="Previous slide">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <!-- JS injects slides here -->
+    <div id="bestSellerSlider"></div>
+
+    <button class="slider-arrow next-btn" type="button" aria-label="Next slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- dots -->
+  <div class="slider-dots" id="bestSellerDots" aria-label="Slider pagination"></div>
+</section>
+
+
+  <!-- FLAVORS / CATEGORIES GRID  -->
+  <section class="flavors-section">
+    <div class="container">
+      <div class="flavors-head">
+        <h2 class="section-heading orange-text">EXPLORE OUR FLAVORS</h2>
+        <p class="section-desc">Browse categories and discover your next favorite treat.</p>
+      </div>
+  
+      <div class="flavors-grid">
+        <a class="flavor-card bg-orange" href="products.html">
+          <div class="flavor-img">
+            <img src="images/menu1.jpg" alt="Breads category" />
+          </div>
+          <div class="flavor-title">BREADS</div>
+        </a>
+
+        <a class="flavor-card bg-pink" href="products.html">
+          <div class="flavor-img">
+            <img src="images/menu4.jpg" alt="Cakes category" />
+          </div>
+          <div class="flavor-title">CAKES</div>
+        </a>
+
+        <a class="flavor-card bg-orange" href="products.html">
+          <div class="flavor-img">
+            <img src="images/menu5.jpg" alt="Drinks category" />
+          </div>
+          <div class="flavor-title">DRINKS</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-col logo-col">
+        <div class="footer-logo-circle">
+          <img alt="Rose Logo" id="logo2" src="images/logo2.png" />
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>ABOUT</h3>
+        <p>
+          Welcome to the Official website of Rose Bakeshop PH.
+          #PasalubongNgBayan #FreshlyBakedEveryday
+        </p>
+
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>HEADQUARTERS</h3>
+        <p>Dona Vicenta Village, Bajada, Davao City, Philippines</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>QUICKLINKS</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Rose Bakeshop. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#">Sitemap</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Menu page slider logic (self-contained so it definitely works) -->
+  <script>
+    // If your main script already defines these helpers, this won't break anything.
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderBestSellerSliderMenu() {
+      const sliderHost = document.getElementById("bestSellerSlider");
+      const dotsHost = document.getElementById("bestSellerDots");
+      if (!sliderHost || !dotsHost) return;
+
+      const products = (window.PRODUCTS || []).filter(p => p.bestSeller);
+      sliderHost.innerHTML = "";
+      dotsHost.innerHTML = "";
+
+      if (products.length === 0) {
+        sliderHost.innerHTML =
+          '<div class="slide-content active"><div class="slide-text"><h2 class="slide-title">No Best Sellers Yet</h2><p>Add bestSeller: true in data.js</p></div></div>';
+        return;
+      }
+
+      // Build slides
+      products.forEach((p, idx) => {
+        const slide = document.createElement("div");
+        slide.className = "slide-content" + (idx === 0 ? " active" : "");
+
+        slide.innerHTML = `
+          <div class="slide-text">
+            <h2 class="slide-title">${escapeHtml(p.name)}</h2>
+            <p>${escapeHtml(p.description || "Customer favorite.")}</p>
+          </div>
+          <div class="slide-image">
+            <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}" />
+          </div>
+        `;
+        sliderHost.appendChild(slide);
+
+        const dot = document.createElement("span");
+        dot.className = "dot" + (idx === 0 ? " active" : "");
+        dot.setAttribute("role", "button");
+        dot.setAttribute("tabindex", "0");
+        dot.setAttribute("aria-label", `Go to slide ${idx + 1}`);
+        dot.addEventListener("click", () => showSlide(idx));
+        dot.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") showSlide(idx);
+        });
+        dotsHost.appendChild(dot);
+      });
+
+      const slides = Array.from(sliderHost.querySelectorAll(".slide-content"));
+      const dots = Array.from(dotsHost.querySelectorAll(".dot"));
+      let current = 0;
+
+      function showSlide(i) {
+        slides[current].classList.remove("active");
+        dots[current].classList.remove("active");
+
+        current = (i + slides.length) % slides.length;
+
+        slides[current].classList.add("active");
+        dots[current].classList.add("active");
+      }
+
+      // Buttons
+      const prev = document.querySelector(".prev-btn");
+      const next = document.querySelector(".next-btn");
+
+      if (prev) prev.addEventListener("click", () => showSlide(current - 1));
+      if (next) next.addEventListener("click", () => showSlide(current + 1));
+    }
+
+    document.addEventListener("DOMContentLoaded", renderBestSellerSliderMenu);
+  </script>
+</body>
+</html>

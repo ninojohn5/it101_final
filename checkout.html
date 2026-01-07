@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Rose Bakeshop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+
+    
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div class="container-wide header-content">
+        <div class="logo-area">
+          <a class="" href="index.html">
+            <img src="images/logo.png" alt="Rose Bakeshop Logo" />
+          </a>
+        </div>
+    
+        <div class="nav-area">
+          <!-- HAMBURGER BUTTON -->
+          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+    
+          <!-- NAV (IMPORTANT: add id="primaryNav") -->
+          <nav class="main-nav" id="primaryNav">
+            <a href="index.html">HOME</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="menu.html">MENU</a>
+            <a href="cart.html">CART <span class="cart-badge" data-cart-count>0</span></a>
+            <a href="checkout.html">CHECKOUT</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+    <main>
+      
+<section class="page-head">
+  <div class="container">
+    <h1>Checkout</h1>
+    <p>Fill out your details to complete the checkout UI. No payment integration is included.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container checkout-wrap" data-checkout>
+    <div class="form-card">
+      <h2 style="margin-bottom: 12px;">Customer Information</h2>
+
+      <form data-checkout-form>
+        <div class="form-grid">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" autocomplete="name" data-required />
+            <div class="error-text" data-error-for="fullName"></div>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxxx" data-required />
+            <div class="error-text" data-error-for="phone"></div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email" placeholder="name@email.com" data-required />
+            <div class="error-text" data-error-for="email"></div>
+          </div>
+
+          <div class="field">
+            <label for="city">City</label>
+            <input id="city" type="text" autocomplete="address-level2" data-required />
+            <div class="error-text" data-error-for="city"></div>
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="address">Complete address</label>
+            <textarea id="address" rows="3" autocomplete="street-address" data-required></textarea>
+            <div class="error-text" data-error-for="address"></div>
+          </div>
+
+          <div class="field">
+            <label for="delivery">Delivery option</label>
+            <select id="delivery" data-required>
+              <option value="">Choose one</option>
+              <option value="standard">Standard delivery</option>
+              <option value="pickup">Store pickup</option>
+            </select>
+            <div class="error-text" data-error-for="delivery"></div>
+          </div>
+
+          <div class="field">
+            <label for="notes">Notes (optional)</label>
+            <input id="notes" type="text" placeholder="Any request for your order?" />
+            <div class="error-text"></div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+          <a class="btn-outline" href="cart.html">Back to cart</a>
+          <button class="btn-solid-brown" type="submit" data-place-order>Place order</button>
+        </div>
+
+        <p class="hint">This demo shows HCI: clear feedback, validation, and error prevention using disabled buttons.</p>
+      </form>
+    </div>
+
+    <aside data-checkout-summary></aside>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="main-footer">
+<div class="container footer-grid">
+<div class="footer-col logo-col">
+<div class="footer-logo-circle">
+<img alt="Rose Logo" id="logo2" src="images/logo2.png"/>
+</div>
+</div>
+<div class="footer-col">
+<h3>ABOUT</h3>
+<p>
+            Welcome to the Official website of Rose Bakeshop PH.
+            #PasalubongNgBayan #FreshlyBakedEveryday
+          </p>
+<div class="footer-socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h3>HEADQUARTERS</h3>
+<p>Dona Vicenta Village, Bajada, Davao City, Philippines</p>
+</div>
+<div class="footer-col">
+<h3>QUICKLINKS</h3>
+<ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="menu.html">Menu</a></li><li><a href="cart.html">Cart</a></li><li><a href="checkout.html">Checkout</a></li></ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="container">
+<p>© 2025 Rose Bakeshop. All rights reserved.</p>
+<div class="legal-links">
+<a href="#">Sitemap</a>
+<a href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

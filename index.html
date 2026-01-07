@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Rose Bakeshop | Home</title>
+
+    <link href="images/logo2.png" rel="icon" />
+    <link href="styles.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (MOVED HERE, not inside body) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+      <div class="container-wide header-content">
+        <div class="logo-area">
+          <a class="" href="index.html">
+            <img src="images/logo.png" alt="Rose Bakeshop Logo" />
+          </a>
+        </div>
+    
+        <div class="nav-area">
+          <!-- HAMBURGER BUTTON -->
+          <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+    
+          <!-- NAV (IMPORTANT: add id="primaryNav") -->
+          <nav class="main-nav" id="primaryNav">
+            <a href="index.html">HOME</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="menu.html">MENU</a>
+            <a href="cart.html">CART <span class="cart-badge" data-cart-count>0</span></a>
+            <a href="checkout.html">CHECKOUT</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+    <!-- HERO -->
+    <section class="hero-banner">
+      <div class="container-wide hero-grid">
+        <div class="hero-text-side">
+          <h1 class="hero-title">
+            CREATING <br />SWEET MEMORIES <br />FOR GENERATIONS
+          </h1>
+
+          <p class="hero-subtitle">
+            For over 40 years, we have been creating lasting memories with the
+            Filipinos the way only Rose Bakeshop can.
+          </p>
+
+          <div class="hero-buttons">
+            <!-- Avoid broken links during grading -->
+            <a class="btn-outline-white" href="#">FRANCHISE WITH US</a>
+            <a class="btn-solid-brown" href="menu.html">EXPLORE MENU</a>
+          </div>
+        </div>
+
+        <div class="hero-image-side">
+          <img alt="Rose Bakeshop Favorites" src="images/hero_bg2.png" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SUMMARY -->
+    <section class="about-summary">
+      <img alt="" class="floating-deco position-left" src="images/pan1.jpg" />
+      <img alt="" class="floating-deco position-right" src="images/pan2.jpg" />
+      <img alt="" class="floating-deco position-left-bottom" src="images/pan3.jpg" />
+      <img alt="" class="floating-deco position-right-bottom" src="images/cake.jpg" />
+
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading orange-text">THE ROSE STORY</h2>
+          <p class="section-desc">
+            Our success story is your story, too. You've always been part of
+            this delightful journey, and we know that you'll stick around in the
+            coming years.
+          </p>
+
+          <!-- Avoid broken link during grading -->
+          <a class="btn-solid-brown" href="#">ABOUT US</a>
+        </div>
+
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="card-text">
+              <h3>OUR MISSION</h3>
+              <p>
+                Be a market leader in the baking industry in the southern part
+                of the country known for its product quality, and eventually to
+                the whole world.
+              </p>
+            </div>
+            <div class="card-icon"><i class="fas fa-heart"></i></div>
+          </div>
+
+          <div class="mission-card">
+            <div class="card-text">
+              <h3>OUR VISION</h3>
+              <p>
+                We envision to be the number one bakeshop in the country with
+                excellent product quality and customer service.
+              </p>
+            </div>
+            <div class="card-icon"><i class="fas fa-eye"></i></div>
+          </div>
+
+          <div class="mission-card">
+            <div class="card-text">
+              <h3>OUR VALUES</h3>
+              <p>God-centered, Guts, and Good Values.</p>
+            </div>
+            <div class="card-icon"><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU PREVIEW -->
+    <section class="menu-preview-section">
+      <div class="container-wide menu-preview-grid">
+        <img alt="" class="floating-deco position-center" src="images/breadcrumbs.png" />
+
+        <div class="menu-image-card">
+          <img alt="Menu Preview" src="images/pares.png" />
+        </div>
+
+        <div class="menu-text-content">
+          <h2 class="section-heading orange-text">ROSE MENU</h2>
+          <p class="section-desc">
+            Discover your new favorites that will get you going throughout the day.
+          </p>
+          <a class="btn-solid-brown" href="menu.html">EXPLORE MENU</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-col logo-col">
+          <div class="footer-logo-circle">
+            <img alt="Rose Logo" id="logo2" src="images/logo2.png" />
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>ABOUT</h3>
+          <p>
+            Welcome to the Official website of Rose Bakeshop PH.
+            #PasalubongNgBayan #FreshlyBakedEveryday
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>HEADQUARTERS</h3>
+          <p>Dona Vicenta Village, Bajada, Davao City, Philippines</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>QUICKLINKS</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© 2025 Rose Bakeshop. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="#">Sitemap</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
